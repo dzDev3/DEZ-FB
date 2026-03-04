@@ -4,7 +4,7 @@
 
 # 2. HANYA IZINKAN FILE PENTING INI
 !dezfbevo1.0.py
-!dezfbevo1.0_debug.py
+dezfbevo1.0_debug.py
 !Identity_Engine.py
 !Identity_Manager.py
 !bloks_handler.py
