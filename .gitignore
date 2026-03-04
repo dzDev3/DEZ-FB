@@ -1,0 +1,22 @@
+# 1. ABAIKAN SEMUA FILE SECARA DEFAULT
+*
+!.gitignore
+
+# 2. HANYA IZINKAN FILE PENTING INI
+!dezfbevo1.0.py
+!dezfbevo1.0_debug.py
+!Identity_Engine.py
+!Identity_Manager.py
+!bloks_handler.py
+!README.md
+
+# 3. ABAIKAN DATA SENSITIF (Double Protection)
+.cok.txt
+.tok.txt
+.cookie
+saved_cookie.txt
+DEZZ-RES/
+DEZZ-OK/
+DEZZ-CP/
+*.log
+__pycache__/
