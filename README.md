@@ -1,35 +1,66 @@
-# 🚀 FB-DEZ 1.0 - GraphQL Native Cracking
+```text
+  ██████   ████████  ████████  ████████
+  ██  ███  ██              ██        ██
+  ██   ██  ██████         ██        ██ 
+  ██   ██  ██            ██        ██  
+  ██  ███  ██           ██        ██   
+  ██████   ████████  ████████  ████████
+  [ DEZ-FB - PREMIUM GRAPHQL NATIVE ]
+```
 
-**FB-DEZ** adalah tools cracking Facebook berbasis Python yang menggunakan metode **GraphQL Native**. Tools ini dirancang dengan sistem emulasi identitas perangkat yang sangat presisi untuk meminimalisir checkpoint dan e53.
+# 🚀 DEZ-FB 1.0 - BYPASS THE LIMIT
 
-## ✨ Fitur Utama
-- **GraphQL Native Engine**: Kecepatan tinggi dengan response yang akurat.
-- **Identity Emulation**: Emulasi Device ID, Machine ID, dan ZCA Token yang sinkron.
-- **Dynamic Headers**: User-Agent dan Header yang berubah setiap sesi (Rotate).
-- **Anti Spam Block**: Deteksi otomatis limit Facebook & mode ganti IP.
-- **Rich Interface**: Tampilan terminal yang premium dan interaktif.
+**DEZ-FB** adalah tools cracking Facebook paling santuy tapi mematikan. Dibuat khusus buat lu yang bosen kena Checkpoint (CP) dan error e53. Tools ini pake jalan ninja **GraphQL Native**—interaksi langsung ke urat nadi server FB, jadi speed-nya gak usah ditanya lagi.
 
-## 🛠️ Instalasi
-1. Clone repository ini:
-   ```bash
-   git clone https://github.com/dzDev3/FB-DEZ.git
-   ```
-2. Masuk ke folder:
-   ```bash
-   cd FB-DEZ
-   ```
-3. Install requirements:
-   ```bash
-   pip install requests rich
-   ```
+> [!NOTE]
+> **Status Proyek**: Tools ini masih dalam tahap **pengembangan aktif (Beta)**. Fitur-fitur baru akan terus ditambahkan dan optimasi keamanan akan selalu diperbarui secara berkala.
 
-## 🚀 Cara Menjalankan
+---
+
+## � Kenapa Harus DEZ-FB?
+- **⚡ Speed Dewa**: Gak pake browser-browseran, langsung tembak API GraphQL. Wuzzz!
+- **🎭 Clone Perangkat Asli**: Lu dapet emulasi **Identity Engine** (ZCA, Machine ID, Attestation). Server FB bakal ngira lu lagi pake HP Android beneran.
+- **🔄 Auto-Rotate Iden**: Identitas perangkat ganti-ganti tiap sesinya. Aman dari radar spam.
+- **✨ Tampilan Premium**: Pakai library Rich. Cracking jadi lebih estetik, gak cuma tulisan item putih doang.
+- **🎯 Detect Presisi**: Auto sortir akun **OK**, **CP**, sampe **A2F**. Gak ada yang kelewat.
+
+---
+
+## 🛠️ Cara Pasang (Biar Kagak Error)
+
+Pastiin udah ada **Python 3** di sistem lu.
+
+### 1. Amankan Folder
+```bash
+git clone https://github.com/dzDev3/DEZ-FB.git
+cd DEZ-FB
+```
+
+### 2. Sikat Dependensi
+```bash
+pip install requests rich
+```
+
+### 3. Gasskeun!
 ```bash
 python dezfbevo1.0.py
 ```
 
-## 📜 Disclaimer
-Tools ini dibuat untuk tujuan edukasi dan pengujian keamanan saja. Penulis tidak bertanggung jawab atas penyalahgunaan tools ini.
+---
+
+## 📖 Cara Pake
+1. Pilih menu cracking yang lu mau.
+2. Atur **Worker Thread** (Mau santuy pake 15, mau ngebut atur sendiri).
+3. Masukin target (ID|Nama).
+4. Duduk manis, kopi dulu, hasil otomatis kesimpen di folder `DEZZ-RES/`.
 
 ---
-**Author: DEZZ**
+
+## 📜 Disclaimer
+Lakuin dengan resiko sendiri. Tools ini dibuat cuma buat **Edukasi** & **Research**. Gue gak tanggung jawab kalo lu macem-macem. *Stay safe, stay logic.*
+
+---
+<p align="center">
+  <b>Developed by DEZZ</b><br>
+  <i>"The Art of Precision Cracking"</i>
+</p>
