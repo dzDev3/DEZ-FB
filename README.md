@@ -1,33 +1,30 @@
-# DEZ-FB V1.0 - Ultimate Facebook Multi-Tool 🚀
+# DEZ-FB V1.0 - Ultimate Facebook Multi-Tool
 
-A powerful, multi-threaded Facebook scraping and account security testing tool designed for efficiency and anonymity.
+Tools Facebook All-In-One generasi terbaru dengan fitur ceranggih untuk kebutuhan Dumping dan Cracking massal menggunakan jalur GraphQL & Bloks API.
 
-## ✨ Key Features
-- **All-In-One Interface**: Group Dumping, Reaction Dumping, and Cracking in one script.
-- **Identity Engine**: Mimics high-end Android devices (Samsung S24, Pixel 9, Xiaomi 14, etc.) with accurate screen metrics.
-- **Dynamic Headers**: Randomized Android OS (10-15) and connection types (WIFI/CELLULAR).
-- **Pro Generator**: Password generation based on target's full name (Front/Middle/Last) with custom numeric suffixes.
-- **Smart Logic**: Ctrl+C bypass to transition directly from Dumping to Cracking.
+## ✨ Fitur Utama
+- **Identity Engine "Bunglon"**: Bypass deteksi dengan ratusan profil perangkat (Samsung, Xiaomi, Pixel, dll) beserta randomisasi Android OS (10-15) dan Jaringan (WIFI/CELLULAR).
+- **GraphQL Dumper**: Dumping member Grup dan reaksi Postingan dengan kecepatan tinggi.
+- **Bloks Crack Engine**: Sistem login v544 terbaru yang stabil dan minim checkpoint.
+- **Auto Pass Generator**: Menciptakan kombinasi password cerdas dari nama target (depan/tengah/belakang/full).
+- **Seamless UI**: Transisi otomatis dari hasil dump langsung ke proses crack hanya dengan `Ctrl+C`.
 
-## 🛠️ Installation
-1. Clone the repository:
+## 🚀 Cara Penggunaan
+1. Pastikan Anda memiliki Python 3.x terinstal.
+2. Install dependensi:
    ```bash
-   git clone https://github.com/yourusername/dezfb.git
-   cd dezfb
+   pip install requests uuid
    ```
-2. Install dependencies:
-   ```bash
-   pip install requests
-   ```
-3. Run the tool:
+3. Jalankan tools:
    ```bash
    python dezfb1.0.py
    ```
+4. Masukkan Cookie Facebook saat diminta untuk pertama kali.
 
-## 🛡️ Usage
-- Enter your Facebook Cookie to start.
-- Choose a menu (Dump Group, Dump Reaction, or Crack).
-- Use `Ctrl+C` at any time to stop dumping and immediately process the results for cracking.
+## 📁 Struktur File Penting
+- `dezfb1.0.py`: File controller utama (Menu, Dump, Crack).
+- `iden.py`: Modul enkripsi dan generator identitas perangkat.
 
-## ⚠️ Disclaimer
-This tool is for educational and security testing purposes only. The developer is not responsible for any misuse.
+---
+**Author**: Dezz (dzDev3)
+**Versi**: 1.0 (Ultimate Build)
