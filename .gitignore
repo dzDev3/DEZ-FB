@@ -2,12 +2,5 @@ __pycache__/
 *.pyc
 saved_cookie.txt
 Results/
-dump_group_*.txt
-dump_reaction_*.txt
 *.txt
 !README.md
-.gemini/
-.agents/
-.agent/
-_agents/
-_agent/
