@@ -1,0 +1,21 @@
+# Git Ignore for DEZ-FB
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Data Privacy & Results (Paling Penting!)
+saved_cookie.txt
+Results/
+*.txt
+!README.md
+!fbtest.txt
+
+# Debug/Logs
+last_response.json
+debug_result.txt
+debug_result_utf8.txt
