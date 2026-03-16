@@ -52,15 +52,16 @@ class CrackMassal:
             else:
                 suffixes = ["123", "1234", "12345", "123456"]
 
-            # 1. Masukkan variasi untuk setiap patah kata (Depan, Tengah, Belakang)
-            for word in words:
-                if len(word) >= 3:
+            # 1. Masukkan variasi Nama Depan
+            if len(words) >= 1:
+                first_word = words[0]
+                if len(first_word) >= 3:
                     for suff in suffixes:
-                        pw_list.append(word.capitalize() + suff)
+                        pw_list.append(first_word.capitalize() + suff)
                     for suff in suffixes:
-                        pw_list.append(word + suff)
+                        pw_list.append(first_word + suff)
             
-            # 2. Masukkan variasi untuk nama lengkap (gabungan tanpa spasi)
+            # 2. Masukkan variasi Nama Lengkap (gabungan tanpa spasi)
             if len(words) > 1:
                 full_word = "".join(words)
                 if len(full_word) >= 3:

@@ -15,7 +15,7 @@ Tool buat dump and crack akun Facebook. Udah pake engine GraphQL and Bloks.
 ### Fitur
 * **Identity Engine**: Random 200+ device (Samsung, Pixel, Xiaomi, dll). Random OS Android 10-15.
 * **Dumper**: Sikat member grup and reaksi post lewat GraphQL. Udah support pagination end-cursor.
-* **Auto Pass**: Generator sandi otomatis dari nama target (depan/tengah/belakang).
+* **Auto Pass**: Generator sandi otomatis dari nama depan and nama lengkap.
 * **Operation**: Bisa langsung crack dari hasil dump (pake Ctrl+C).
 * **Login Bloks**: Pake payload 3-lapis mirip FB asli biar gak gampang CP.
 
