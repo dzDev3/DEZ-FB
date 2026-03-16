@@ -49,6 +49,8 @@ class CrackMassal:
                 suffixes = ["123", "1234", "12345", "123456"]
             elif metode == 2:
                 suffixes = [f"{i:02d}" for i in range(1, 31)] # 01 sampai 30
+            elif metode == 3:
+                suffixes = manual_passwords # Gunakan input manual sebagai suffix
             else:
                 suffixes = ["123", "1234", "12345", "123456"]
 
@@ -175,16 +177,21 @@ class CrackMassal:
         print(f"{P}--- METODE PASSWORD ---")
         print(f"{P}[1] Nama Depan & Nama Lengkap + 123, 1234, 12345, 123456")
         print(f"{P}[2] Nama Depan & Nama Lengkap + Angka 01 sampai 30")
+        print(f"{P}[3] Nama Depan & Nama Lengkap + Custom Suffix (Pilihan Sendiri)")
         
         try:
-            pil_metode = int(input(f"{P}[?] Pilih Metode (1/2): ").strip() or "1")
-            if pil_metode not in [1, 2]: pil_metode = 1
+            pil_metode = int(input(f"{P}[?] Pilih Metode (1/2/3): ").strip() or "1")
+            if pil_metode not in [1, 2, 3]: pil_metode = 1
         except:
             pil_metode = 1
             
         print(f"[*] Menggunakan Metode: {pil_metode}")
     
-        pw_input = input(f"{P}[?] Masukkan Password Tambahan (Opsional, pisahkan koma): ")
+        if pil_metode == 3:
+            pw_input = input(f"{P}[?] Masukkan Suffix Custom (misal: gans,007,cakep): ")
+        else:
+            pw_input = input(f"{P}[?] Masukkan Password Tambahan (Opsional, pisahkan koma): ")
+        
         self.passwords = [p.strip() for p in pw_input.split(",") if p.strip()]
         
         try:
