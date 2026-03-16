@@ -11,9 +11,11 @@ class FacebookRSAEncrypter:
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
         }
+
     def generate_pwd_enc(self, password):
         timestamp = str(int(time.time()))
         return f"#PWD_ENC:0:{timestamp}:{password}"
+
 
 class BloksIdentityEngine:
     def __init__(self):
