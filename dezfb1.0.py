@@ -173,8 +173,8 @@ class CrackMassal:
         print(f"[*] Berhasil memuat {len(self.targets)} target.\n")
         
         print(f"{P}--- METODE PASSWORD ---")
-        print(f"{P}[1] Semua Nama (Depan/Tengah/Belakang/Full) + 123, 1234, 12345, 123456")
-        print(f"{P}[2] Semua Nama (Depan/Tengah/Belakang/Full) + Angka 01 sampai 30")
+        print(f"{P}[1] Nama Depan & Nama Lengkap + 123, 1234, 12345, 123456")
+        print(f"{P}[2] Nama Depan & Nama Lengkap + Angka 01 sampai 30")
         
         try:
             pil_metode = int(input(f"{P}[?] Pilih Metode (1/2): ").strip() or "1")
