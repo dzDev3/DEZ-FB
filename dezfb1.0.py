@@ -77,7 +77,7 @@ class CrackMassal:
                 
         # Jika sama sekali kosong (tidak ada nama dan tidak ada manual)
         if not pw_list:
-            pw_list = ["123456", "sayang"] # Fallback
+            pw_list = ["123456"] # Fallback
             
         return pw_list
 
