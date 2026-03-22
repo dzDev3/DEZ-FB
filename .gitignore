@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+saved_cookie.txt
+Results/
+*.txt
+!README.md
