@@ -46,6 +46,13 @@ python fbcrack.py
 - **Mode Pesawat (Direkomendasikan)**: Untuk hasil yang lebih maksimal dan menghindari IP spam, disarankan menggunakan **Mode Pesawat** dengan bantuan **Auto Clicker**.
 - **Setting Auto Clicker**: Atur jeda sekitar **10 detik** (aktifkan mode pesawat) dan setiap **2 menit** (matikan/siklus) untuk mengganti Alamat IP secara berkala.
 
+### 📸 Tampilan / Screenshots
+Berikut adalah visualisasi antarmuka aplikasi saat dijalankan:
+
+| Tampilan Terminal PC | Tampilan Termux (Mobile) |
+| :---: | :---: |
+| <img src="screenshots/screenshot_pc.png" width="380" alt="PC Version" /> | <img src="screenshots/screenshot_termux.png" width="380" alt="Termux Version" /> |
+
 ---
 **Author: dzDev3 (DEZ-FB Development)**  
 *Project ini dibuat untuk tujuan pembelajaran dan riset keamanan digital.*
