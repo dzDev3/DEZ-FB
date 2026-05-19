@@ -51,7 +51,7 @@ Berikut adalah visualisasi antarmuka aplikasi saat dijalankan:
 
 | Tampilan Terminal PC | Tampilan Termux (Mobile) |
 | :---: | :---: |
-| <img src="screenshots/screenshot_pc.png" width="380" alt="PC Version" /> | <img src="screenshots/screenshot_termux.png" width="380" alt="Termux Version" /> |
+| <img src="screenshots/screenshot_pc.png" width="380" alt="PC Version" /> | <img src="screenshots/screenshot_sticker.jpg" width="380" alt="Termux Version" /> |
 
 ---
 **Author: dzDev3 (DEZ-FB Development)**  
